@@ -163,6 +163,8 @@ class Nanoweb:
                     else:
                         # 3. Try to load index file
                         if request.url in ('', '/'):
+                            await request.write("HTTP/1.1 200 OK\r\n")
+                            await request.write("Content-Type: text/html\r\n\r\n")
                             await send_file(request, self.INDEX_FILE)
                         else:
                             # 4. Current url have an assets extension ?
